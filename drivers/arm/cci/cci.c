@@ -128,6 +128,12 @@ void __init cci_init(uintptr_t base, const int *map,
 	assert(cci_num_slave_ports >= 0);
 
 	assert(validate_cci_map(map));
+
+	mmio_write_32(cci_base + CTRL_OVERRIDE_REG,
+		      SNOOP_FILTER_DIS_BIT);
+	dsbish();
+	while ((mmio_read_32(cci_base + STATUS_REG) & CHANGE_PENDING_BIT) != 0U)
+		;
 }
 
 void cci_enable_snoop_dvm_reqs(unsigned int master_id)

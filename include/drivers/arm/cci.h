@@ -66,6 +66,9 @@
 #define WRITE_CHNL_QOS_VAL_OVERRIDE_REG	U(0x104)
 #define MAX_OT_REG			U(0x110)
 
+/* Control register bit definitions */
+#define SNOOP_FILTER_DIS_BIT           BIT_32(2)
+
 /* Snoop Control register bit definitions */
 #define DVM_EN_BIT			BIT_32(1)
 #define SNOOP_EN_BIT			BIT_32(0)
